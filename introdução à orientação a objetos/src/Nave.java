@@ -23,4 +23,13 @@ public class Nave {
         arma = new Arma(); //composição
     }
 
+   /* public Nave(String nome, int velocidade, String tipo, int poder) //jeito diferente de mexer com composição
+    {
+         this.nome = nome;
+         this.velocidade = velocidade;
+         this.arma = new Arma("Fogo", 20);
+
+    }
+    */
+
 }

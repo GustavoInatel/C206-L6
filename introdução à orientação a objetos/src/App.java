@@ -21,6 +21,7 @@ public class App {
         System.out.println("O salário com décimo terceiro é de: " + funcionario1.salarioAnual(300));
 
 
+        /*
         Nave nave = new Nave();
         nave.nome = "Xwing";
         nave.velocidade = 200;
@@ -33,9 +34,13 @@ public class App {
         System.out.println(nave.arma);
         nave.addArma(armadanave);
         System.out.println(nave.arma.tipo);
-         */
+         
 
          System.out.println(nave.arma.tipo); 
+         */
+
+         //esse  é um dos tipos de composição, onde o construtor da classe do objeto todo recebe também os atributos da classe do objeto parte como parâmetros
+         
 
     }
 }
