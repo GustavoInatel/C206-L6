@@ -1,0 +1,40 @@
+++ Produtos ++
+Nome do produto: Cookie de Chocolate
+Preï¿½o do produto: 5.25
+Tipo do produto: Comida
+
+++ Produtos ++
+Nome do produto: Ovos
+Preï¿½o do produto: 12.0
+Tipo do produto: Comida
+
+++ Produtos ++
+Nome do produto: 2
+Preï¿½o do produto: 2.0
+Tipo do produto: 2
+
+++ Produtos ++
+Nome do produto: Leite
+Preï¿½o do produto: 8.59
+Tipo do produto: Comida
+
+++ Produtos ++
+Nome do produto: Fio Dental
+Preï¿½o do produto: 3.6
+Tipo do produto: Higiene
+
+++ Produtos ++
+Nome do produto: Cadeira
+Preï¿½o do produto: 10.0
+Tipo do produto: Decoraï¿½ï¿½o
+
+++ Produtos ++
+Nome do produto: Uva
+Preço do produto: 5.5
+Tipo do produto: Comida
+
+++ Produtos ++
+Nome do produto: Sof 
+Preço do produto: 350.0
+Tipo do produto: Decoracao
+
