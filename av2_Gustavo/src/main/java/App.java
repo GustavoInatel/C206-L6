@@ -15,5 +15,6 @@ public final class App {
         System.out.println("Quantidade de soldados: " + Soldado.qtdSoldado);
 
     
+
     }
 }

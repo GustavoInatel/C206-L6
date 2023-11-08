@@ -1,4 +1,4 @@
 public interface Defesa 
 {
-    public void defender();    
+    public void defender();   
 }

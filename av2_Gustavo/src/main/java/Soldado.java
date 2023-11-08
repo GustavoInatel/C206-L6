@@ -5,6 +5,12 @@ public abstract class Soldado
     private long cpf;
     private ItemEspecial itemespec;
 
+    /* ----------------------------------------------------
+    sargento 000fx31212 qtdsoldado = 1
+    ----------------------------------------------------
+    sargento 000gsah1221  qtdsoldado = 2
+    ---------------------------------------------------- */
+
     public void mostraInfo()
     {
         System.out.println("Nome do soldado: " + nome);

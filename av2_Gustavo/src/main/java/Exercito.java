@@ -48,7 +48,7 @@ public class Exercito
                     m.mostraInfo();
                     m.usandoItem();
                     m.curar();
-                    System.out.println();
+                    System.out.println( );
                 }
                 
             }
