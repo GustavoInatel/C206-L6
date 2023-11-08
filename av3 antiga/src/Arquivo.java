@@ -1,123 +1,108 @@
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Arquivo {
 
-    // Métodos que podemos realizar com o arquivo
-    public void escrever(Produto produto) 
-    {
-        // Instanciando os objetos que permitirão a escrita de dados
-        OutputStream os = null; // fluxo de entrada
-        OutputStreamWriter osw = null; //leitor de fluxo de entrada
-        BufferedWriter bw = null; //buffer entrada
+    // Configurando o método de escrever no Arquivo
+    public void escrever(Produto produto) {
 
-        // Variável auxiliar
-        String linha;
+        // Criando as estruturas que permitirão escrever o arquivo
+        OutputStream os = null;
+        OutputStreamWriter osw = null;
+        BufferedWriter bw = null;
 
+        // try catch para possíveis erros
         try {
-            // Abrindo a saída de dados
-            os = new FileOutputStream("Produtos.txt", true); // Nome do arquivo onde será salvo
+
+            // Informamos o nome do arquivo onde queremos armazernar nossas informações
+            os = new FileOutputStream("Produtos.txt", true);
+            // Ponte que transforma de stream para caracteres para stream de bytes
             osw = new OutputStreamWriter(os);
+            // Em bw escreveremos a informação que queremos salvar no nosso txt
             bw = new BufferedWriter(osw);
 
-
-            // Flag que indica onde começa as informações do Funcionário
-            bw.write("++ Produtos ++");
+            // Escrevendo uma linha referência
+            bw.write("--- Produto ---");
             bw.newLine();
-            bw.write("Nome do produto: " + produto.getNome() + "\n");/*  */
-            bw.write("Preço do produto: " + produto.getPreco() + "\n");/*  */
-            bw.write("Tipo do produto: " + produto.getTipo() + "\n");/*  */ 
-            bw.newLine();
-        
-           
-    
-
-            // 1. Escrita de forma estática, ou seja, direta
-
-            /* linha="Olá mundo 3";
-            bw.write("Olá mundo\n");
-            bw.write("Olá mundo 2");
-            bw.newLine();
-            bw.write("amei demais"); */
-
-
+            // Pegando os dados do Produto e escrevendo no arquivo
+            bw.write(produto.getNome() + "\n");
+            bw.write(produto.getPreco() + "\n");
+            bw.write(produto.getTipo() + "\n");
 
         } catch (Exception e) {
-            System.out.println("ERRO: " + e);
         } finally {
-            // Fechando a entrada de dados
             try {
                 bw.close();
             } catch (Exception e) {
             }
         }
+
     }
 
-    // 2. Método ler
-
-
     public ArrayList<Produto> ler() {
-        ArrayList<Produto> encontreiNoArquivo = new ArrayList<>();
-    
+
+        // Classes básias para realizar a leitura de dados de um arquivo
         InputStream is = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
-        
-        try 
-        {
+
+        // Variável auxiliar para ler as informações
+        String linhaLer;
+
+        // Array que vai armazer os Produto encontrados no arquivo
+        ArrayList<Produto> arrayProdutos = new ArrayList<>();
+
+        try {
+
             is = new FileInputStream("Produtos.txt");
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
-    
-            String linhaLer;
-    
-            Produto p = null;  // Variável para armazenar temporariamente o produto sendo lido
-    
-            while ((linhaLer = br.readLine()) != null) 
-            { 
-                if (linhaLer.contains("++ Produtos ++")) 
-                {
-                    if (p != null) 
-                    {
-                        encontreiNoArquivo.add(p);
-                    }
-                    p = new Produto();
-                } 
-                
-                //preenchendo as informações do arquivo
-                else if(linhaLer.contains("Nome do produto: ")) 
-                {
-                    p.setNome(linhaLer.substring("Nome do produto: ".length()));
-                } 
 
-                else if(linhaLer.startsWith("Preço do produto: "))  //esse é diferente por ser um double, e não uma string
-                {
-                    p.setPreco(Double.parseDouble(linhaLer.substring("Preço do produto: ".length())));
-                } 
-                
-                else if(linhaLer.startsWith("Tipo do produto: ")) 
-                {
-                    p.setTipo(linhaLer.substring("Tipo do produto: ".length()));
+            linhaLer = br.readLine(); // Coloca o cursor no inicio do arquivo txt
+
+            // Enquanto tiver informações no txt seguimos lendo as informações
+            while (linhaLer != null) {
+
+                // Verificando se a string encontrou a flag
+                if (linhaLer.contains("--- Produto ---")) {
+
+                    // Variavel auxiliar de Produto, que servirá para salver posteriormente o
+                    // Produto do arquivo
+                    Produto aux = new Produto();
+
+                    // Preenchendo as informações do Produto
+                    aux.setNome(br.readLine());
+                    aux.setPreco(Double.parseDouble(br.readLine()));
+                    aux.setTipo(br.readLine());
+
+                    // Colocando o produto no arraylist
+                    arrayProdutos.add(aux);
                 }
+
+                // Voltando a variável novamente ao inicio do arquivo
+                linhaLer = br.readLine();
             }
-    
-            // Adicione o último produto lido, pois o loop termina quando não há mais linhas a serem lidas
-            if (p != null) {
-                encontreiNoArquivo.add(p);
-            }
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
+
         } finally {
             try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+                br.close();
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
-    
-        return encontreiNoArquivo;
+
+        // Retornando o arraylist para a main
+        return arrayProdutos;
     }
-    
 }
