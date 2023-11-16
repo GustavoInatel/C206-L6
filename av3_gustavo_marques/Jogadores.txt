@@ -13,3 +13,8 @@ Nome do jogador: Ederson
 Número do jogador: 1
 Posição do jogador: Goleiro
 
+++ Jogadores ++
+Nome do jogador: Rog‚rio Ceni
+Número do jogador: 1
+Posição do jogador: Goleiro
+
